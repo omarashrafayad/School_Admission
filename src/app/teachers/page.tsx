@@ -1,4 +1,3 @@
-import CreateStudentForm from '@/components/CreateteachersForm'
 import TeachersListPage from '@/components/TeacherList'
 import TopComponent from '@/components/TopComponent'
 import React from 'react'

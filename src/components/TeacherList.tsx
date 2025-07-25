@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 
-import { Edit2, Mail, Phone, Trash2 } from "lucide-react";
+import {  Mail, Phone } from "lucide-react";
 import Pagination from "./Pagination";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import Image from "next/image";
-import { deleteteacher, fetchteachers, updateteacher } from "@/redux/teacherslice";
+import {  fetchteachers, updateteacher } from "@/redux/teacherslice";
 import Link from "next/link";
 
 interface teachers {
@@ -40,17 +40,17 @@ export default function TeachersListPage() {
   }
 }, [dispatch, teachers.length]);
 
-      const handleDelete = async (id: string) => {
-        try {
-          await dispatch(deleteteacher(id)).unwrap()
-          dispatch(fetchteachers()) // ⬅️ تحديث الطلاب من Firestore
-        } catch (err) {
-          console.error('Error deleting student:', err)
-        }
-      }
-      const handleEdit = (student: teachers) => {
-        setEditingteacher(student)
-      }
+      // const handleDelete = async (id: string) => {
+      //   try {
+      //     await dispatch(deleteteacher(id)).unwrap()
+      //     dispatch(fetchteachers()) // ⬅️ تحديث الطلاب من Firestore
+      //   } catch (err) {
+      //     console.error('Error deleting student:', err)
+      //   }
+      // }
+      // const handleEdit = (student: teachers) => {
+      //   setEditingteacher(student)
+      // }
       const handleUpdate = async () => {
       if (!editingteacher?.id) return;
     

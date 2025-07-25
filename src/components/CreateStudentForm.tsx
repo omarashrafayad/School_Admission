@@ -18,7 +18,7 @@ const initialFormData = {
   image: null as File | null,
 }
 
-const CreateStudentForm = ({ onClose }: { onClose?: () => void }) => {
+const CreateStudentForm = ({  }: { onClose?: () => void }) => {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState(initialFormData)
   const [loading, setLoading] = useState(false)
@@ -51,7 +51,7 @@ const CreateStudentForm = ({ onClose }: { onClose?: () => void }) => {
       }
 
       // ✅ 2. حضر الداتا بدون الصورة
-      const { image, ...restData } = formData
+      const {...restData } = formData
       const newStudent = {
         ...restData,
         price: parseFloat(formData.price.toString()),

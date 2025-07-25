@@ -1,4 +1,3 @@
-import CreateStudentForm from '@/components/CreateStudentForm'
 import StudentList from '@/components/StudentList'
 import TopComponent from '@/components/TopComponent'
 import React from 'react'

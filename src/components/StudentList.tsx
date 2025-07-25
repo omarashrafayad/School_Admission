@@ -1,9 +1,9 @@
 "use client"
-import React, { useEffect, useState, useMemo, useRef } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { fetchStudents, deleteStudent, updateStudent } from '@/redux/studentslice'
 import { RootState } from '@/redux/store'
-import { Edit2, Mail, Phone, Trash2 } from 'lucide-react'
+import {  Mail, Phone } from 'lucide-react'
 import Pagination from './Pagination'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -33,17 +33,17 @@ const StudentList = () => {
     dispatch(fetchStudents())
   }, [dispatch])
 
-  const handleDelete = async (id: string) => {
-    try {
-      await dispatch(deleteStudent(id)).unwrap()
-      dispatch(fetchStudents()) // ⬅️ تحديث الطلاب من Firestore
-    } catch (err) {
-      console.error('Error deleting student:', err)
-    }
-  }
-  const handleEdit = (student: Student) => {
-    setEditingStudent(student)
-  }
+  // const handleDelete = async (id: string) => {
+  //   try {
+  //     await dispatch(deleteStudent(id)).unwrap()
+  //     dispatch(fetchStudents()) // ⬅️ تحديث الطلاب من Firestore
+  //   } catch (err) {
+  //     console.error('Error deleting student:', err)
+  //   }
+  // }
+  // const handleEdit = (student: Student) => {
+  //   setEditingStudent(student)
+  // }
   const handleUpdate = async () => {
   if (!editingStudent?.id) return;
 

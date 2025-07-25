@@ -72,7 +72,7 @@ const CreateFoodForm = () => {
         imageUrl = data.secure_url
       }
 
-      const { image, ...restData } = formData
+      const {  ...restData } = formData
       const newFood = { ...restData, imageUrl }
 
       await dispatch(addFoods(newFood)).unwrap()

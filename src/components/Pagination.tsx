@@ -1,6 +1,4 @@
-import { useAppSelector } from '@/redux/hooks'
-import { RootState } from '@/redux/store'
-import { ArrowLeft, ArrowRight, ChevronLeftCircle, ChevronRightCircle } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import React from 'react'
 
 type PaginationProps = {

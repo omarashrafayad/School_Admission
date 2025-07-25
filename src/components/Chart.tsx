@@ -163,3 +163,5 @@ export default function SchoolPerformanceChart() {
     </div>
   );
 }
+CustomTooltip.displayName = "CustomTooltip"; // ✅ أضف اسم للمكون
+

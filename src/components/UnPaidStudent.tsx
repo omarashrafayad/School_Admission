@@ -31,7 +31,7 @@ const UnPaidStudent = () => {
             (currentPage - 1) * perPage,
             currentPage * perPage
         );
-    }, [unPaidStudents, currentPage, perPage]);
+    }, [unPaidStudents, currentPage]);
     return (
         <div className="bg-[var(--bg-background)] mt-6 rounded-lg p-5 min-h-[750px]">
             <h1 className="font-bold text-lg text-[var(--color-accent2)]">

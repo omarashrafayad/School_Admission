@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/store";
-import { fetchFoods, deleteFoods } from "@/redux/foodslice";
+import { fetchFoods } from "@/redux/foodslice";
 import Image from "next/image";
 import { BarChart2, Star, TrendingUp } from "lucide-react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
@@ -13,7 +13,7 @@ const FoodList = () => {
     const dispatch = useDispatch<AppDispatch>();
     const [category,setcategory] = useState<string[]>([])
     const [selectcategory,setselectcategory] = useState("All")
-    const { Foods, loading, error } = useSelector(
+    const { Foods, error } = useSelector(
         (state: RootState) => state.food
     );
   useEffect(() => {

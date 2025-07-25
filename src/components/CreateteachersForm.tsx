@@ -49,7 +49,7 @@ const CreateTeacherForm = ({ onClose }: { onClose?: () => void }) => {
                 imageUrl = data.secure_url;
             }
 
-            const { image, ...restData } = formData;
+            const { ...restData } = formData;
 
             const newTeacher = {
                 ...restData,
