@@ -4,7 +4,7 @@ import { useParams } from "next/navigation"; // أو useRouter في Pages Router
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import Image from "next/image";
-import TopComponent from "@/components/TopComponent";
+import TopComponent from "@/components/Nested/TopComponent";
 import { BarChart2, Star, TrendingUp } from "lucide-react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
@@ -42,16 +42,16 @@ const FoodDetails = () => {
 
     if (!food)
         return (
-            <div className="flex items-center justify-center flex-col h-screen w-[950px]">
+            <div className="flex items-center justify-center flex-col h-screen w-full ">
                 <div className="loading"></div>
-                <p className="text-gray-500 text-sm mt-2">loading Food Details</p>
+                <p className="text-[var(--color-accent2)] text-sm mt-2">loading Food Details</p>
             </div>
         );
 
     return (
         <div className="bg-[var(--color-secondary)] p-6 ">
             <TopComponent text={"Food Details"} />
-            <div className="bg-[var(--bg-background)] p-7 rounded-b-lg">
+            <div className="bg-[var(--bg-background)] p-7 rounded-lg">
                 <div className="flex items-start gap-8 max-md:flex-col">
                     <div>
                         {food.imageUrl && (
@@ -106,7 +106,7 @@ const FoodDetails = () => {
                         <TrendingUp aria-label="Interest percentage" className="text-[var(--color-primary)] w-15 h-15" />
                         <div>
                             <span className="text-[var(--color-accent2)] font-bold">
-                                {food.interest}%
+                                {food.interest}
                             </span>
                             <p className="text-[var(--color-accent1)] text-sm mt-2">
                                 Interest
@@ -123,7 +123,7 @@ const FoodDetails = () => {
                                 trailColor: "#F3F4FF",
                             })}
                         />
-                        <div className="absolute inset-0 flex items-center justify-center text-sm text-black">
+                        <div className="absolute inset-0 flex items-center justify-center text-sm text-[var(--color-accent2)]">
                             {food.percent}%
                         </div>
                     </div>

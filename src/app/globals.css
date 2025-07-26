@@ -3,6 +3,7 @@
 
 :root {
   --bg-background: white;
+  --foreground: #121212;
   --color-primary: #4d44b5;
   --color-primary2: #4d44b5;
   --color-secondary: #f3f4ff;
@@ -56,7 +57,7 @@ body {
   width: 2.5rem;
   height: 2.5rem;
   border: 4px solid #d1d5db;
-  border-top-color: var(--color-accent2);
+  border-top-color: var(--color-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

@@ -1,5 +1,5 @@
-import TopComponent from "@/components/TopComponent";
-import ChatPage from "@/components/Chat";
+import TopComponent from "@/components/Nested/TopComponent";
+import ChatPage from "@/components/Chats/Chat";
 
 const Page = () => {
     return (

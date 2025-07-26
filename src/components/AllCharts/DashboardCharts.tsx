@@ -17,14 +17,16 @@ const barData = [
   { name: "Sun", thisWeek: 50, lastWeek: 65 },
 ];
 
-const dayPickerStyles = {
-  day: { width: "100px", color: "var(--color-accent2)" },
-  month_grid: { color: "var(--color-accent1)" },
-};
 
 const BAR_RADIUS: [number, number, number, number] = [10, 10, 0, 0];
 
 const BAR_SIZE = 13;
+
+const dayPickerStyles = {
+  day: {
+    width: "100px",
+  },
+};
 
 export default function DashboardCharts() {
   const [value, setValue] = useState(new Date());
@@ -37,25 +39,30 @@ export default function DashboardCharts() {
 
       {/* Calendar */}
       <div className="col-span-1">
-        <div className="bg-[var(--bg-background)] rounded-2xl p-5 min-h-[426px]">
+        <div className="bg-[var(--bg-background)] rounded-lg p-5 min-h-[426px]">
           <h2 className="font-bold text-lg text-[var(--color-accent2)] mb-4">
             School Calendar
           </h2>
-          <DayPicker
-            aria-label="School Calendar Date Picker"
-            mode="single"
-            required
-            selected={value || undefined}
-            onSelect={setValue}
-            className="text-[var(--color-accent2)] overflow-x-auto"
-            styles={dayPickerStyles}
-          />
+          <div className="w-full">
+            <DayPicker
+              aria-label="School Calendar Date Picker"
+              mode="single"
+              required
+              selected={value || undefined}
+              onSelect={setValue}
+              className="w-full text-[var(--color-accent2)] overflow-x-auto "
+              modifiersClassNames={{
+                today: "font-bold text-blue-600",
+              }}
+              styles={dayPickerStyles}
+            />
+          </div>
         </div>
       </div>
 
       {/* Finance Chart */}
       <div className="col-span-1">
-        <div className="bg-[var(--bg-background)] rounded-2xl p-5 sm:min-h-[430px]">
+        <div className="bg-[var(--bg-background)] rounded-lg p-5 sm:min-h-[430px]">
           <div className="flex justify-between mb-4">
             <h2 className="font-bold text-lg text-[var(--color-accent2)]">
               School Finance

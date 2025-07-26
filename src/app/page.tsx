@@ -1,12 +1,12 @@
 "use client"
 
-import CurrentFoodMenu from "@/components/CurrentFoodMenu"
-import DashboardCharts from "@/components/DashboardCharts"
-import DetailsDashboard from "@/components/DetailsDashboard"
-import ResentStudents from "@/components/ResentStudents"
-import TopComponent from "@/components/TopComponent"
-import UnPaidStudent from "@/components/UnPaidStudent"
-import ChatSidebar from "@/components/ChatList"
+import CurrentFoodMenu from "@/components/Foods/CurrentFoodMenu"
+import DashboardCharts from "@/components/AllCharts/DashboardCharts"
+import DetailsDashboard from "@/components/Details/DetailsDashboard"
+import ResentStudents from "@/components/Students/ResentStudents"
+import TopComponent from "@/components/Nested/TopComponent"
+import UnPaidStudent from "@/components/Students/UnPaidStudent"
+import ChatSidebar from "@/components/Chats/ChatList"
 
 export default function Home() {
 
@@ -19,7 +19,7 @@ export default function Home() {
     <DashboardCharts/>
     <UnPaidStudent/>
       </div>
-      <div className="bg-[var(--bg-background)] flex-1 p-6 rounded-md w-full ">
+      <div className="bg-[var(--bg-background)] flex-1 p-6 rounded-lg w-full ">
         <ResentStudents/>
         <ChatSidebar/>
         <CurrentFoodMenu/>

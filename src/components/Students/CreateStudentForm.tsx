@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import { useAppDispatch } from '@/redux/hooks'
-import { addStudent } from '@/redux/studentslice' 
-
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { addStudent } from '@/redux/studentslice'
+import { RootState } from '@/redux/store'
 
 const initialFormData = {
   name: '',
@@ -18,10 +18,14 @@ const initialFormData = {
   image: null as File | null,
 }
 
-const CreateStudentForm = ({  }: { onClose?: () => void }) => {
+const CreateStudentForm = ({ }: { onClose?: () => void }) => {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState(initialFormData)
   const [loading, setLoading] = useState(false)
+  const currentUser = useAppSelector(
+    (state: RootState) => state.auth.currentUser
+  );
+  const adminEmail = "omar.ayad3040@gmail.com";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -35,11 +39,10 @@ const CreateStudentForm = ({  }: { onClose?: () => void }) => {
     try {
       let imageUrl = ""
 
-      // ✅ 1. ارفع الصورة على Cloudinary لو موجودة
       if (formData.image) {
         const formDataCloud = new FormData()
         formDataCloud.append("file", formData.image)
-        formDataCloud.append("upload_preset", "unsigned_students") // لازم preset يكون unsigned
+        formDataCloud.append("upload_preset", "unsigned_students") 
 
         const response = await fetch("https://api.cloudinary.com/v1_1/dqdwjumwk/image/upload", {
           method: "POST",
@@ -50,15 +53,13 @@ const CreateStudentForm = ({  }: { onClose?: () => void }) => {
         imageUrl = data.secure_url
       }
 
-      // ✅ 2. حضر الداتا بدون الصورة
-      const {...restData } = formData
+      const { ...restData } = formData
       const newStudent = {
         ...restData,
         price: parseFloat(formData.price.toString()),
         imageUrl,
       }
 
-      // ✅ 3. ضيف الطالب
       await dispatch(addStudent(newStudent)).unwrap()
 
       setFormData(initialFormData)
@@ -68,7 +69,11 @@ const CreateStudentForm = ({  }: { onClose?: () => void }) => {
       setLoading(false)
     }
   }
-
+  if (currentUser?.email !== adminEmail) {
+    return <div>
+      this page Availabe Admin only
+    </div>
+  }
   return (
     <form
       onSubmit={handleSubmit}

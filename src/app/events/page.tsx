@@ -1,5 +1,5 @@
-import EventCalendar from "@/components/EventCalendar";
-import TopComponent from "@/components/TopComponent";
+import EventCalendar from "@/components/Events/EventCalendar";
+import TopComponent from "@/components/Nested/TopComponent";
 
 const EventPage = () => {
     return (

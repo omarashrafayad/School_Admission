@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addteachers } from "@/redux/teacherslice";
+import { RootState } from "@/redux/store";
 
 const initialFormData = {
     name: "",
@@ -19,6 +20,10 @@ const CreateTeacherForm = ({ onClose }: { onClose?: () => void }) => {
     const dispatch = useAppDispatch();
     const [formData, setFormData] = useState(initialFormData);
     const [loading, setLoading] = useState(false);
+    const currentUser = useAppSelector(
+        (state: RootState) => state.auth.currentUser
+    );
+    const adminEmail = "omar.ayad3040@gmail.com";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -53,10 +58,10 @@ const CreateTeacherForm = ({ onClose }: { onClose?: () => void }) => {
 
             const newTeacher = {
                 ...restData,
-                education:(restData.education),
+                education: (restData.education),
                 phone: formData.phone.toString(),
                 imageUrl,
-                createdAt: new Date().toISOString(), // Add createdAt property
+                createdAt: new Date().toISOString(),
             };
 
             await dispatch(addteachers(newTeacher)).unwrap();
@@ -69,8 +74,12 @@ const CreateTeacherForm = ({ onClose }: { onClose?: () => void }) => {
             setLoading(false);
         }
     };
-
-return (
+    if (currentUser?.email !== adminEmail) {
+        return <div>
+            this page Availabe Admin only
+        </div>
+    }
+    return (
         <form
             onSubmit={handleSubmit}
             className="bg-[var(--bg-background)] p-6 rounded-xl shadow-md w-full max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4"

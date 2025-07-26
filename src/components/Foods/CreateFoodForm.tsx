@@ -1,8 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useAppDispatch } from '@/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { addFoods } from '@/redux/foodslice'
+import { RootState } from '@/redux/store';
 type MealType = "breakfast" | "lunch" | "dinner" | "snack";
 
 interface FoodFormData {
@@ -34,7 +35,11 @@ const initialFormData: FoodFormData = {
 const CreateFoodForm = () => {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState(initialFormData)
+  const currentUser = useAppSelector(
+    (state: RootState) => state.auth.currentUser
+  );
   const [loading, setLoading] = useState(false)
+  const adminEmail = "omar.ayad3040@gmail.com";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -72,7 +77,7 @@ const CreateFoodForm = () => {
         imageUrl = data.secure_url
       }
 
-      const {  ...restData } = formData
+      const { ...restData } = formData
       const newFood = { ...restData, imageUrl }
 
       await dispatch(addFoods(newFood)).unwrap()
@@ -85,7 +90,11 @@ const CreateFoodForm = () => {
       setLoading(false)
     }
   }
-
+  if (currentUser?.email !== adminEmail) {
+    return <div>
+      this page Availabe Admin only
+    </div>
+  }
   return (
     <form
       onSubmit={handleSubmit}
@@ -105,24 +114,24 @@ const CreateFoodForm = () => {
 
       <input name="percent" type="number" value={formData.percent} onChange={handleChange} placeholder="Percent" className="w-full border p-2 rounded" />
 
-     <textarea
-  name="ingredient"
-  value={formData.ingredient}
-  onChange={handleChange}
-  placeholder="Ingredient Info (each on a new line)"
-  className="w-full border p-2 rounded"
-  rows={5}
-/>
+      <textarea
+        name="ingredient"
+        value={formData.ingredient}
+        onChange={handleChange}
+        placeholder="Ingredient Info (each on a new line)"
+        className="w-full border p-2 rounded"
+        rows={5}
+      />
 
 
-    <textarea
-  name="nurtrition"
-  value={formData.nurtrition}
-  onChange={handleChange}
-  placeholder="Nutrition Info (each on a new line)"
-  className="w-full border p-2 rounded"
-  rows={5}
-/>
+      <textarea
+        name="nurtrition"
+        value={formData.nurtrition}
+        onChange={handleChange}
+        placeholder="Nutrition Info (each on a new line)"
+        className="w-full border p-2 rounded"
+        rows={5}
+      />
 
 
       <select name="mealType" value={formData.mealType} onChange={handleChange} className="w-full border p-2 rounded">

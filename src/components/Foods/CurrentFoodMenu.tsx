@@ -20,12 +20,13 @@ const CurrentFoodMenu = () => {
                 {loading ? (
                     <div className="flex items-center justify-center flex-col ">
                         <div className="loading"></div>
-                        <p className="text-gray-500 text-sm mt-2">loading Foods</p>
+                        <p className="text-[var(--color-accent2)] text-sm mt-2">loading Foods</p>
                     </div>
                 ) : (
                     <>
                         {(Foods ?? []).slice(0, 3).map((food) => (
                             <div key={food.id}>
+                                    <Link href={`/food/${food.id}`}>
                                 <div className=" relative w-full h-36 max-lg:h-56 ">
                                     <Image
                                         src={food.imageUrl}
@@ -33,8 +34,9 @@ const CurrentFoodMenu = () => {
                                         loading="lazy"
                                         alt={`Image of ${food.name}`}
                                         className="cursor-pointer hover:opacity-85 transition-all  duration-500 rounded-lg object-cover"
-                                    />
+                                        />
                                 </div>
+                                        </Link>
                                 <div className="mt-3">
                                     <h4 className="text-[var(--color-accent2)] font-semibold text-sm">
                                         {food.name}

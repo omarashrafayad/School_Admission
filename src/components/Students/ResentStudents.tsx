@@ -27,7 +27,7 @@ const ResentStudents = () => {
             loading?(
             <div className="flex items-center justify-center flex-col ">
             <div className="loading"></div>
-            <p className="text-gray-500 text-sm mt-2">loading Student</p>
+            <p className="text-[var(--color-accent2)] text-sm mt-2">loading Student</p>
             </div>
             ):(
                 <>

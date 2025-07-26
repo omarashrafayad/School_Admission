@@ -113,41 +113,41 @@ export default function ChatSidebar() {
             <div className="space-y-3">
 
                 {
-                    users.length === 0 ?(
-                    <div className="flex items-center justify-center flex-col ">
-            <div className="loading"></div>
-            <p className="text-gray-500 text-sm mt-2">loading Users</p>
-          </div>
-                    ):
-                    (
-                        <>
-                        {
-        users.slice(0, 5).map((u) => (
-                    <div
-                        key={u.uid}
-                        onClick={() => createOrOpenChat(u.uid)}
-                        className="flex items-center p-2 rounded hover:bg-[var(--color-secondary)] cursor-pointer"
-                    >
-                        <div className="w-12 h-12 bg-purple-300 rounded-full flex items-center justify-center text-white font-bold">
-                            {u.name?.[0] || "U"}
+                    users.length === 0 ? (
+                        <div className="flex items-center justify-center flex-col ">
+                            <div className="loading"></div>
+                            <p className="text-[var(--color-accent2)] text-sm mt-2">loading Users</p>
                         </div>
-                        <div className="ml-3">
-                            <div className="text-[var(--color-accent2)] font-semibold text-sm">
-                                {u.name}
-                            </div>
-                            <div className="text-[var(--color-accent1)] text-xs">
-                                {chats.find((c) => c.members.includes(u.uid))?.lastMessage ||
-                                    "No messages yet"}
-                            </div>
-                        </div>
-                    </div>
-                ))
-                        }
-                <Link href="/chat" className=" bg-[var(--color-secondary)] shadow-xs hover:bg-[var(--color-accent4)] py-3 rounded-3xl text-[var(--color-accent2)] font-semibold mt-3 cursor-pointer w-full block text-center ">View More</Link>
-                        </>
-                
-            )
-        }
+                    ) :
+                        (
+                            <>
+                                {
+                                    users.slice(0, 5).map((u) => (
+                                        <div
+                                            key={u.uid}
+                                            onClick={() => createOrOpenChat(u.uid)}
+                                            className="flex items-center p-2 rounded hover:bg-[var(--color-secondary)] cursor-pointer"
+                                        >
+                                            <div className="w-12 h-12 bg-purple-300 rounded-full flex items-center justify-center text-white font-bold">
+                                                {u.name?.[0] || "U"}
+                                            </div>
+                                            <div className="ml-3">
+                                                <div className="text-[var(--color-accent2)] font-semibold text-sm">
+                                                    {u.name}
+                                                </div>
+                                                <div className="text-[var(--color-accent1)] text-xs">
+                                                    {chats.find((c) => c.members.includes(u.uid))?.lastMessage ||
+                                                        "No messages yet"}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                                <Link href="/chat" className=" bg-[var(--color-secondary)] shadow-xs hover:bg-[var(--color-accent4)] py-3 rounded-3xl text-[var(--color-accent2)] font-semibold mt-3 cursor-pointer w-full block text-center ">View More</Link>
+                            </>
+
+                        )
+                }
             </div>
 
         </div>

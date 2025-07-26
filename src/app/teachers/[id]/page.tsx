@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import Image from "next/image";
-import TopComponent from "@/components/TopComponent";
+import TopComponent from "@/components/Nested/TopComponent";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Teacher } from "@/redux/teacherslice";
 
@@ -29,7 +29,7 @@ const TeatcherDetails = () => {
     return (
       <div className="flex items-center justify-center flex-col h-screen w-full px-4">
         <div className="loading"></div>
-        <p className="text-gray-500 text-sm mt-2">loading Teacher Details</p>
+        <p className="text-[var(--color-accent2)] text-sm mt-2">loading Teacher Details</p>
       </div>
     );
 
@@ -38,11 +38,11 @@ const TeatcherDetails = () => {
       <TopComponent text={"Teacher Details"} />
 
       {/* الجزء العلوي */}
-      <div className="bg-[var(--color-primary)] relative px-4 sm:px-7 py-10 sm:py-12 rounded-t-lg">
+      <div className="bg-[var(--color-primary)] relative px-4 sm:px-7 py-10 sm:py-12 rounded-lg">
         <div className="border-10 border-[var(--color-yellow)] w-20 h-20 sm:w-50 sm:h-50 rounded-full absolute right-5 sm:right-10 top-5 z-10"></div>
         <div className="border-10 border-[var(--color-orange)] w-20 h-20 sm:w-50 sm:h-50 rounded-full absolute right-16 sm:right-37 top-12 z-5"></div>
 
-        <div className="border-4 border-gray-300 w-20 h-20 sm:w-30 sm:h-30 rounded-full absolute top-8 left-5 sm:left-7 z-50 bg-[var(--bg-background)] overflow-hidden">
+        <div className="border-4 border-[var(--color-accent4)] w-20 h-20 sm:w-30 sm:h-30 rounded-full absolute top-8 left-5 sm:left-7 z-50 bg-[var(--bg-background)] overflow-hidden">
           {teacher.imageUrl && (
             <Image
               src={teacher.imageUrl}

@@ -1,8 +1,8 @@
-import SchoolPerformanceChart from '@/components/Chart'
-import DeatailsFinance from '@/components/DeatailsFinance'
-import SchoolExpense from '@/components/SchoolExpense'
-import TopComponent from '@/components/TopComponent'
-import UnPaidStudent from '@/components/UnPaidStudent'
+import SchoolPerformanceChart from '@/components/AllCharts/Chart'
+import DeatailsFinance from '@/components/Details/DeatailsFinance'
+import SchoolExpense from '@/components/Students/SchoolExpense'
+import TopComponent from '@/components/Nested/TopComponent'
+import UnPaidStudent from '@/components/Students/UnPaidStudent'
 import React from 'react'
 
 const page = () => {
@@ -11,7 +11,7 @@ const page = () => {
     <TopComponent text='Finance'/>
     <DeatailsFinance/>
     <SchoolPerformanceChart/>
-    <div className='flex gap-5 max-lg:flex-col'>
+    <div className='flex gap-5 max-xl:flex-col'>
         <div className='flex-1 '>
       <UnPaidStudent/>
         </div>
