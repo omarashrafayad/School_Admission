@@ -11,7 +11,7 @@ const StudentMobile = ({ currentStudent }: { currentStudent: Student[] }) => {
                     <div className="flex items-center gap-4">
                         <div className="w-16 h-16 relative">
                             {student.imageUrl && (
-                                <Link href={`/students/${student.id}`}>
+                                <Link href={`/student/${student.id}`}>
                                     <Image
                                         src={student.imageUrl ?? ""}
                                         alt={student.name}
