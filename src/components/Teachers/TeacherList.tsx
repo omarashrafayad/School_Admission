@@ -49,17 +49,18 @@ export default function TeachersListPage() {
     (currentpage - 1) * perpage,
     currentpage * perpage
   );
-  if (loading)
-    return (
-      <div className="flex items-center justify-center flex-col h-[100vh]">
+  return (
+    <>
+    {
+      loading? (
+        <div className="flex items-center justify-center flex-col h-[100vh]">
         <div className="loading"></div>
         <p className="text-[var(--color-accent2)] text-sm mt-2">
           loading Teachers
         </p>
       </div>
-    );
-  return (
-    <div className="mt-5">
+      ):
+      <div className="mt-5">
       <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5">
         {currentTeachers.map((teacher) => (
           <div
@@ -125,5 +126,7 @@ export default function TeachersListPage() {
         data={teachers.length}
       />
     </div>
+    }
+   </>
   );
 }
