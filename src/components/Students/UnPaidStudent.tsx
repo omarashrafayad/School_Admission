@@ -51,7 +51,7 @@ const UnPaidStudent = () => {
                         <div className="flex items-center gap-3">
                             <div className="relative w-15 h-15 flex-shrink-0 ">
                                 {student.imageUrl && (
-                                    <Link href={`/students/${student.id}`}>
+                                    <Link href={`/student/${student.id}`}>
                                         <Image
                                             src={student.imageUrl}
                                             alt={student.name}
