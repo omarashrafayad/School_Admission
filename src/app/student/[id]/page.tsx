@@ -24,7 +24,6 @@ const StudentDetails = () => {
         const fetchStudent = async () => {
             const docRef = doc(db, "students", id as string);
             const docSnap = await getDoc(docRef);
-
             if (docSnap.exists()) {
                 setStudent({ id: docSnap.id, ...docSnap.data() as Student });
             }
@@ -80,7 +79,7 @@ const StudentDetails = () => {
                 </div>
             </div>
 
-            {/* Student Info */}
+            
             <div className="bg-[var(--bg-background)] p-5 sm:p-7 rounded-b-lg relative z-40">
                 <h2 className="mb-2 text-[var(--color-accent2)] text-xl sm:text-2xl font-bold mt-10">
                     {student.name}
@@ -88,7 +87,7 @@ const StudentDetails = () => {
                 <p className="text-xs text-[var(--color-accent1)] font-bold">Student</p>
 
                 <div className="flex flex-col sm:flex-wrap sm:flex-row items-start sm:items-center gap-5 sm:gap-3 justify-between mt-7">
-                    {/* Parents */}
+                
                     <div>
                         <p className="text-sm text-[var(--color-accent1)]">Parents:</p>
                         <div className="flex items-center gap-3 mt-2">
